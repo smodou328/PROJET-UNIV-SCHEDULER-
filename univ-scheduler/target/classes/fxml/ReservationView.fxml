@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.univscheduler.controllers.ReservationController"
+            styleClass="main-root">
+
+    <top>
+        <VBox>
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+                <Button text="← Retour" styleClass="back-btn" onAction="#goBack"/>
+                <Label text="📋 Réservations de Salles" styleClass="topbar-title" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userNameLabel" styleClass="topbar-user"/>
+            </HBox>
+
+            <HBox styleClass="filter-bar" spacing="12" alignment="CENTER_LEFT">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="totalLabel" styleClass="total-label"/>
+                <Button text="+ Nouvelle Réservation" styleClass="primary-btn" onAction="#showAddDialog"/>
+                <Button fx:id="confirmBtn" text="✅ Confirmer" styleClass="success-btn" onAction="#confirmSelected"/>
+                <Button fx:id="cancelBtn" text="❌ Annuler" styleClass="danger-btn" onAction="#cancelSelected"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox styleClass="content-area">
+            <!-- Legend -->
+            <HBox spacing="20" style="-fx-padding: 8 16;">
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="■" style="-fx-text-fill: #fef3c7;"/>
+                    <Label text="En attente" style="-fx-font-size: 12px;"/>
+                </HBox>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="■" style="-fx-text-fill: #d1fae5;"/>
+                    <Label text="Confirmée" style="-fx-font-size: 12px;"/>
+                </HBox>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="■" style="-fx-text-fill: #fee2e2;"/>
+                    <Label text="Annulée" style="-fx-font-size: 12px;"/>
+                </HBox>
+            </HBox>
+
+            <TableView fx:id="reservationTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+                <columns>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="110"/>
+                    <TableColumn fx:id="colHeures" text="Horaire" prefWidth="130"/>
+                    <TableColumn fx:id="colSalle" text="Salle" prefWidth="160"/>
+                    <TableColumn fx:id="colDemandeur" text="Demandeur" prefWidth="180"/>
+                    <TableColumn fx:id="colMotif" text="Motif" prefWidth="220"/>
+                    <TableColumn fx:id="colStatut" text="Statut" prefWidth="120"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucune réservation" styleClass="table-placeholder"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

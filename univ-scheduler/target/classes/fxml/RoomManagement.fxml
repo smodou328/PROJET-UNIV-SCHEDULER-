@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.univscheduler.controllers.RoomManagementController"
+            styleClass="main-root">
+
+    <top>
+        <VBox>
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+                <Button text="← Retour" styleClass="back-btn" onAction="#goBack"/>
+                <Label text="🚪 Gestion des Salles" styleClass="topbar-title" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userNameLabel" styleClass="topbar-user"/>
+            </HBox>
+
+            <HBox styleClass="filter-bar" spacing="12" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="🔍 Rechercher une salle..." prefWidth="250"
+                           styleClass="search-field"/>
+                <ComboBox fx:id="typeFilter" prefWidth="180" promptText="Tous les types"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="totalLabel" styleClass="total-label"/>
+                <Button fx:id="addBtn" text="+ Ajouter" styleClass="primary-btn" onAction="#showAddDialog"/>
+                <Button fx:id="editBtn" text="✏ Modifier" styleClass="secondary-btn" onAction="#showEditSelectedDialog"/>
+                <Button fx:id="deleteBtn" text="🗑 Supprimer" styleClass="danger-btn" onAction="#deleteSelected"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox styleClass="content-area" spacing="0">
+            <TableView fx:id="roomTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+                <columns>
+                    <TableColumn fx:id="colNumero" text="Numéro" prefWidth="120"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="150"/>
+                    <TableColumn fx:id="colCapacite" text="Capacité" prefWidth="100"/>
+                    <TableColumn fx:id="colEtage" text="Étage" prefWidth="80"/>
+                    <TableColumn fx:id="colBatiment" text="Bâtiment" prefWidth="180"/>
+                    <TableColumn fx:id="colDisponible" text="Disponibilité" prefWidth="140"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucune salle trouvée" styleClass="table-placeholder"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

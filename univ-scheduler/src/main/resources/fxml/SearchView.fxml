@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.univscheduler.controllers.SearchController"
+            styleClass="main-root">
+
+    <top>
+        <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+            <Button text="← Retour" styleClass="back-btn" onAction="#goBack"/>
+            <Label text="🔍 Recherche de Salles Disponibles" styleClass="topbar-title" HBox.hgrow="ALWAYS"/>
+            <Label fx:id="userNameLabel" styleClass="topbar-user"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox styleClass="search-panel" spacing="20" prefWidth="280">
+            <Label text="🔎 Critères de Recherche" styleClass="panel-title"/>
+            <Separator/>
+
+            <VBox spacing="8">
+                <Label text="Jour de la semaine" styleClass="field-label"/>
+                <ComboBox fx:id="jourCombo" maxWidth="Infinity"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Heure de début" styleClass="field-label"/>
+                <TextField fx:id="heureDebutField" promptText="08:00" styleClass="input-field"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Heure de fin" styleClass="field-label"/>
+                <TextField fx:id="heureFinField" promptText="10:00" styleClass="input-field"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Capacité minimale" styleClass="field-label"/>
+                <Spinner fx:id="capaciteSpinner" min="1" max="500" initialValue="1" maxWidth="Infinity"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Type de salle" styleClass="field-label"/>
+                <ComboBox fx:id="typeFilter" maxWidth="Infinity"/>
+            </VBox>
+
+            <Button text="🔍 Rechercher" styleClass="primary-btn search-btn"
+                    maxWidth="Infinity" onAction="#searchNow"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <VBox styleClass="info-box" spacing="6">
+                <Label text="💡 Astuce" style="-fx-font-weight: bold;"/>
+                <Label text="Double-cliquez sur une salle pour voir ses détails." wrapText="true"
+                       style="-fx-font-size: 11px; -fx-text-fill: #6b7280;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="content-area" spacing="12">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="Résultats" styleClass="section-title"/>
+                <Label fx:id="resultsLabel" styleClass="results-badge"/>
+            </HBox>
+
+            <TableView fx:id="resultsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+                <columns>
+                    <TableColumn fx:id="colNumero" text="Numéro" prefWidth="120"/>
+                    <TableColumn fx:id="colType" text="Type" prefWidth="150"/>
+                    <TableColumn fx:id="colCapacite" text="Capacité" prefWidth="100"/>
+                    <TableColumn fx:id="colBatiment" text="Bâtiment" prefWidth="200"/>
+                    <TableColumn fx:id="colEtage" text="Étage" prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucune salle disponible pour ce créneau" styleClass="table-placeholder"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

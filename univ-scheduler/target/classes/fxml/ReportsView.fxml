@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.univscheduler.controllers.ReportsController"
+            styleClass="main-root">
+
+    <top>
+        <VBox>
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+                <Button text="← Retour" styleClass="back-btn" onAction="#goBack"/>
+                <Label text="📊 Rapports et Statistiques" styleClass="topbar-title" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userNameLabel" styleClass="topbar-user"/>
+            </HBox>
+
+            <HBox styleClass="filter-bar" spacing="12" alignment="CENTER_LEFT">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🔄 Actualiser" styleClass="secondary-btn" onAction="#refreshStats"/>
+                <Button text="📄 Export PDF" styleClass="secondary-btn" onAction="#exportPDF"/>
+                <Button text="📊 Export Excel" styleClass="secondary-btn" onAction="#exportExcel"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox styleClass="content-area" spacing="24">
+
+                <!-- KPI Cards -->
+                <HBox spacing="16">
+                    <VBox styleClass="kpi-card kpi-blue" HBox.hgrow="ALWAYS" spacing="6">
+                        <Label text="🚪 Total Salles" styleClass="kpi-label"/>
+                        <Label fx:id="totalSallesLabel" styleClass="kpi-value"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card kpi-green" HBox.hgrow="ALWAYS" spacing="6">
+                        <Label text="📈 Taux d'Occupation" styleClass="kpi-label"/>
+                        <Label fx:id="tauxOccupationLabel" styleClass="kpi-value"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card kpi-purple" HBox.hgrow="ALWAYS" spacing="6">
+                        <Label text="📚 Cours/Semaine" styleClass="kpi-label"/>
+                        <Label fx:id="coursParSemaineLabel" styleClass="kpi-value"/>
+                    </VBox>
+                    <VBox styleClass="kpi-card kpi-orange" HBox.hgrow="ALWAYS" spacing="6">
+                        <Label text="📋 Réservations" styleClass="kpi-label"/>
+                        <Label fx:id="reservationsLabel" styleClass="kpi-value"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Charts Row -->
+                <HBox spacing="16">
+                    <!-- Bar Chart: Occupation by day -->
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
+                        <BarChart fx:id="occupationChart" prefHeight="280" animated="true">
+                            <xAxis><CategoryAxis label="Jour"/></xAxis>
+                            <yAxis><NumberAxis label="Nb Cours"/></yAxis>
+                        </BarChart>
+                    </VBox>
+
+                    <!-- Pie Chart: Room types -->
+                    <VBox styleClass="card" prefWidth="320" spacing="8">
+                        <PieChart fx:id="typeRepartitionChart" prefHeight="280" animated="true"
+                                  labelsVisible="true"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Line Chart: Courses by hour -->
+                <VBox styleClass="card" spacing="8">
+                    <LineChart fx:id="weeklyChart" prefHeight="250" animated="true">
+                        <xAxis><CategoryAxis label="Heure"/></xAxis>
+                        <yAxis><NumberAxis label="Nb Cours"/></yAxis>
+                    </LineChart>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

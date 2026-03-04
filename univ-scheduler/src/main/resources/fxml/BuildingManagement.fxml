@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.univscheduler.controllers.BuildingManagementController"
+            styleClass="main-root">
+
+    <top>
+        <VBox>
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+                <Button text="← Retour" styleClass="back-btn" onAction="#goBack"/>
+                <Label text="🏛 Gestion des Bâtiments" styleClass="topbar-title" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userNameLabel" styleClass="topbar-user"/>
+            </HBox>
+
+            <HBox styleClass="filter-bar" spacing="12" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="🔍 Rechercher un bâtiment..." prefWidth="280"
+                           styleClass="search-field"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="totalLabel" styleClass="total-label"/>
+                <Button text="+ Ajouter" styleClass="primary-btn" onAction="#showAddDialog"/>
+                <Button text="✏ Modifier" styleClass="secondary-btn" onAction="#showEditSelectedDialog"/>
+                <Button text="🗑 Supprimer" styleClass="danger-btn" onAction="#deleteSelected"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox styleClass="content-area">
+            <TableView fx:id="buildingTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+                <columns>
+                    <TableColumn fx:id="colNom" text="Nom du Bâtiment" prefWidth="200"/>
+                    <TableColumn fx:id="colLocalisation" text="Localisation" prefWidth="250"/>
+                    <TableColumn fx:id="colEtages" text="Nb Étages" prefWidth="100"/>
+                    <TableColumn fx:id="colDescription" text="Description" prefWidth="300"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucun bâtiment trouvé" styleClass="table-placeholder"/>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

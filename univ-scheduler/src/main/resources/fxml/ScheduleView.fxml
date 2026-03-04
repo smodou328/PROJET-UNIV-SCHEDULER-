@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.univscheduler.controllers.ScheduleController"
+            styleClass="main-root">
+
+    <!-- TOP BAR -->
+    <top>
+        <VBox>
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+                <Button text="← Retour" styleClass="back-btn" onAction="#goBack"/>
+                <Label text="📅 Emploi du Temps" styleClass="topbar-title" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userNameLabel" styleClass="topbar-user"/>
+            </HBox>
+
+            <!-- Filters bar -->
+            <HBox styleClass="filter-bar" spacing="16" alignment="CENTER_LEFT">
+                <Label text="Classe:" styleClass="filter-label"/>
+                <ComboBox fx:id="classeFilter" prefWidth="200" promptText="Toutes les classes"/>
+                <Label text="Enseignant:" styleClass="filter-label"/>
+                <ComboBox fx:id="enseignantFilter" prefWidth="200" promptText="Tous les enseignants"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="addCourseBtn" text="+ Ajouter un Cours" styleClass="primary-btn"
+                        onAction="#showAddCourseDialog"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- SCHEDULE GRID -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="false" styleClass="schedule-scroll">
+            <GridPane fx:id="scheduleGrid" styleClass="schedule-grid"
+                      vgap="0" hgap="0"/>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
