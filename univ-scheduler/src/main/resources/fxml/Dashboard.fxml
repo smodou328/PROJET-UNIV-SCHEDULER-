@@ -1,60 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.univscheduler.controllers.DashboardController"
-            styleClass="main-root">
+<BorderPane styleClass="main-root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.univscheduler.controllers.DashboardController">
 
     <!-- LEFT SIDEBAR -->
     <left>
-        <VBox styleClass="sidebar" prefWidth="230" spacing="4">
+        <VBox prefWidth="230" spacing="4" styleClass="sidebar">
 
             <!-- Logo -->
-            <VBox styleClass="sidebar-logo" spacing="4">
-                <Label text="🎓" style="-fx-font-size: 32px;"/>
-                <Label text="UNIV-SCHEDULER" styleClass="sidebar-title"/>
-                <Label text="v1.0" styleClass="sidebar-version"/>
+            <VBox spacing="4" styleClass="sidebar-logo">
+                <Label style="-fx-font-size: 32px;" text="🎓" />
+                <Label styleClass="sidebar-title" text="UNIV-SCHEDULER" />
+                <Label styleClass="sidebar-version" text="v1.0" />
             </VBox>
 
             <!-- User info -->
-            <VBox styleClass="sidebar-user" spacing="4">
-                <Label fx:id="userNameLabel" styleClass="sidebar-username"/>
-                <Label fx:id="userRoleLabel" styleClass="sidebar-role"/>
+            <VBox spacing="4" styleClass="sidebar-user">
+                <Label fx:id="userNameLabel" styleClass="sidebar-username" />
+                <Label fx:id="userRoleLabel" styleClass="sidebar-role" />
             </VBox>
 
-            <Separator style="-fx-background-color: #334155;"/>
+            <Separator style="-fx-background-color: #334155;" />
 
             <!-- Navigation Menu -->
             <VBox fx:id="menuBox" spacing="2" style="-fx-padding: 8 0;">
-                <Label text="NAVIGATION" styleClass="menu-section-label"/>
+                <Label styleClass="menu-section-label" text="NAVIGATION" />
 
-                <Button text="🏠  Tableau de Bord" styleClass="menu-btn menu-btn-active"
-                        maxWidth="Infinity" onAction="#goToSchedule"/>
-                <Button text="📅  Emploi du Temps" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToSchedule"/>
-                <Button fx:id="btnRooms" text="🚪  Gestion des Salles" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToRooms"/>
-                <Button fx:id="btnBuildings" text="🏛  Bâtiments" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToBuildings"/>
-                <Button fx:id="btnUsers" text="👥  Utilisateurs" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToUsers"/>
-                <Button text="📋  Réservations" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToReservation"/>
-                <Button text="🔍  Recherche Salles" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToSearch"/>
-                <Button fx:id="btnReports" text="📊  Rapports" styleClass="menu-btn"
-                        maxWidth="Infinity" onAction="#goToReports"/>
+                <Button maxWidth="Infinity" onAction="#goToSchedule" styleClass="menu-btn menu-btn-active" text="🏠  Tableau de Bord" />
+                <Button maxWidth="Infinity" onAction="#goToSchedule" styleClass="menu-btn" text="📅  Emploi du Temps" />
+                <Button fx:id="btnRooms" maxWidth="Infinity" onAction="#goToRooms" styleClass="menu-btn" text="🚪  Gestion des Salles" />
+                <Button fx:id="btnBuildings" maxWidth="Infinity" onAction="#goToBuildings" styleClass="menu-btn" text="🏛  Bâtiments" />
+                <Button fx:id="btnUsers" maxWidth="Infinity" onAction="#goToUsers" styleClass="menu-btn" text="👥  Utilisateurs" />
+                <Button maxWidth="Infinity" onAction="#goToReservation" styleClass="menu-btn" text="📋  Réservations" />
+                <Button maxWidth="Infinity" onAction="#goToSearch" styleClass="menu-btn" text="🔍  Recherche Salles" />
+                <Button fx:id="btnReports" maxWidth="Infinity" onAction="#goToReports" styleClass="menu-btn" text="📊  Rapports" />
             </VBox>
 
-            <Region VBox.vgrow="ALWAYS"/>
+            <Region VBox.vgrow="ALWAYS" />
 
-            <!-- Logout -->
-            <Button text="⏏  Se Déconnecter" styleClass="logout-btn"
-                    maxWidth="Infinity" onAction="#handleLogout"/>
+               <!-- Logout -->
+            <Button maxWidth="Infinity" onAction="#handleLogout" styleClass="logout-btn" text="⏏  Se Déconnecter" />
 
         </VBox>
     </left>
@@ -67,51 +60,51 @@
                 <!-- Header -->
                 <HBox alignment="CENTER_LEFT" spacing="16">
                     <VBox spacing="4" HBox.hgrow="ALWAYS">
-                        <Label fx:id="welcomeLabel" styleClass="page-title"/>
-                        <Label fx:id="roleLabel" styleClass="page-subtitle"/>
+                        <Label fx:id="welcomeLabel" styleClass="page-title" />
+                        <Label fx:id="roleLabel" styleClass="page-subtitle" />
                     </VBox>
                     <VBox alignment="CENTER_RIGHT">
-                        <Label fx:id="dateLabel" styleClass="date-label"/>
+                        <Label fx:id="dateLabel" styleClass="date-label" />
                     </VBox>
                 </HBox>
 
                 <!-- Stats Cards Row 1 -->
                 <HBox spacing="16">
                     <!-- Total Salles -->
-                    <VBox styleClass="stat-card stat-blue" HBox.hgrow="ALWAYS" spacing="8">
-                        <Label text="🚪" style="-fx-font-size: 28px;"/>
-                        <Label fx:id="totalSallesLabel" styleClass="stat-number"/>
-                        <Label text="Total Salles" styleClass="stat-label"/>
+                    <VBox spacing="8" styleClass="stat-card stat-blue" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28px;" text="🚪" />
+                        <Label fx:id="totalSallesLabel" styleClass="stat-number" />
+                        <Label styleClass="stat-label" text="Total Salles" />
                     </VBox>
                     <!-- Salles Dispo -->
-                    <VBox styleClass="stat-card stat-green" HBox.hgrow="ALWAYS" spacing="8">
-                        <Label text="✅" style="-fx-font-size: 28px;"/>
-                        <Label fx:id="sallesDispoLabel" styleClass="stat-number"/>
-                        <Label text="Salles Disponibles" styleClass="stat-label"/>
+                    <VBox spacing="8" styleClass="stat-card stat-green" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28px;" text="✅" />
+                        <Label fx:id="sallesDispoLabel" styleClass="stat-number" />
+                        <Label styleClass="stat-label" text="Salles Disponibles" />
                     </VBox>
                     <!-- Total Cours -->
-                    <VBox styleClass="stat-card stat-purple" HBox.hgrow="ALWAYS" spacing="8">
-                        <Label text="📚" style="-fx-font-size: 28px;"/>
-                        <Label fx:id="totalCoursLabel" styleClass="stat-number"/>
-                        <Label text="Cours / Semaine" styleClass="stat-label"/>
+                    <VBox spacing="8" styleClass="stat-card stat-purple" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28px;" text="📚" />
+                        <Label fx:id="totalCoursLabel" styleClass="stat-number" />
+                        <Label styleClass="stat-label" text="Cours / Semaine" />
                     </VBox>
                     <!-- Batiments -->
-                    <VBox styleClass="stat-card stat-orange" HBox.hgrow="ALWAYS" spacing="8">
-                        <Label text="🏛" style="-fx-font-size: 28px;"/>
-                        <Label fx:id="totalBatimentsLabel" styleClass="stat-number"/>
-                        <Label text="Bâtiments" styleClass="stat-label"/>
+                    <VBox spacing="8" styleClass="stat-card stat-orange" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28px;" text="🏛" />
+                        <Label fx:id="totalBatimentsLabel" styleClass="stat-number" />
+                        <Label styleClass="stat-label" text="Bâtiments" />
                     </VBox>
                     <!-- Users -->
-                    <VBox styleClass="stat-card stat-teal" HBox.hgrow="ALWAYS" spacing="8">
-                        <Label text="👥" style="-fx-font-size: 28px;"/>
-                        <Label fx:id="totalUsersLabel" styleClass="stat-number"/>
-                        <Label text="Utilisateurs" styleClass="stat-label"/>
+                    <VBox spacing="8" styleClass="stat-card stat-teal" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28px;" text="👥" />
+                        <Label fx:id="totalUsersLabel" styleClass="stat-number" />
+                        <Label styleClass="stat-label" text="Utilisateurs" />
                     </VBox>
                     <!-- Reservations -->
-                    <VBox styleClass="stat-card stat-pink" HBox.hgrow="ALWAYS" spacing="8">
-                        <Label text="📋" style="-fx-font-size: 28px;"/>
-                        <Label fx:id="totalReservationsLabel" styleClass="stat-number"/>
-                        <Label text="Réservations" styleClass="stat-label"/>
+                    <VBox spacing="8" styleClass="stat-card stat-pink" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28px;" text="📋" />
+                        <Label fx:id="totalReservationsLabel" styleClass="stat-number" />
+                        <Label styleClass="stat-label" text="Réservations" />
                     </VBox>
                 </HBox>
 
@@ -119,33 +112,29 @@
                 <HBox spacing="16" VBox.vgrow="ALWAYS">
 
                     <!-- Today's Schedule -->
-                    <VBox styleClass="card" spacing="12" HBox.hgrow="ALWAYS">
+                    <VBox spacing="12" styleClass="card" HBox.hgrow="ALWAYS">
                         <HBox alignment="CENTER_LEFT" spacing="8">
-                            <Label text="📅" style="-fx-font-size: 18px;"/>
-                            <Label text="Emploi du Temps — Aujourd'hui" styleClass="card-header"/>
+                            <Label style="-fx-font-size: 18px;" text="📅" />
+                            <Label styleClass="card-header" text="Emploi du Temps — Aujourd'hui" />
                         </HBox>
-                        <Separator/>
+                        <Separator />
                         <ScrollPane fitToWidth="true" prefHeight="300" style="-fx-background: transparent;">
-                            <VBox fx:id="todayScheduleBox" spacing="8"/>
+                            <VBox fx:id="todayScheduleBox" spacing="8" />
                         </ScrollPane>
                     </VBox>
 
                     <!-- Quick Actions -->
-                    <VBox styleClass="card" spacing="12" prefWidth="280">
+                    <VBox prefWidth="280" spacing="12" styleClass="card">
                         <HBox alignment="CENTER_LEFT" spacing="8">
-                            <Label text="⚡" style="-fx-font-size: 18px;"/>
-                            <Label text="Actions Rapides" styleClass="card-header"/>
+                            <Label style="-fx-font-size: 18px;" text="⚡" />
+                            <Label styleClass="card-header" text="Actions Rapides" />
                         </HBox>
-                        <Separator/>
+                        <Separator />
                         <VBox spacing="10">
-                            <Button text="📅  Voir l'Emploi du Temps" styleClass="action-btn action-blue"
-                                    maxWidth="Infinity" onAction="#goToSchedule"/>
-                            <Button text="🔍  Trouver une Salle Libre" styleClass="action-btn action-green"
-                                    maxWidth="Infinity" onAction="#goToSearch"/>
-                            <Button text="📋  Nouvelle Réservation" styleClass="action-btn action-orange"
-                                    maxWidth="Infinity" onAction="#goToReservation"/>
-                            <Button text="📊  Voir les Rapports" styleClass="action-btn action-purple"
-                                    maxWidth="Infinity" onAction="#goToReports"/>
+                            <Button maxWidth="Infinity" onAction="#goToSchedule" styleClass="action-btn action-blue" text="📅  Voir l'Emploi du Temps" />
+                            <Button maxWidth="Infinity" onAction="#goToSearch" styleClass="action-btn action-green" text="🔍  Trouver une Salle Libre" />
+                            <Button maxWidth="Infinity" onAction="#goToReservation" styleClass="action-btn action-orange" text="📋  Nouvelle Réservation" />
+                            <Button maxWidth="Infinity" onAction="#goToReports" styleClass="action-btn action-purple" text="📊  Voir les Rapports" />
                         </VBox>
                     </VBox>
 
