@@ -6,8 +6,9 @@ import java.io.File;
 public class DatabaseManager {
     private static DatabaseManager instance;
     private Connection connection;
-    private static final String DB_NAME = "univ_scheduler.db";
-    private static final String DB_URL = "jdbc:sqlite:" + DB_NAME;
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/univ_scheduler?useSSL=false&serverTimezone=UTC";
+    private static final String USER = "root";
+    private static final String PASSWORD = "modoulo328";
 
     private DatabaseManager() {
     }
@@ -21,8 +22,8 @@ public class DatabaseManager {
 
     public void initialize() {
         try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection(DB_URL);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             connection.createStatement().execute("PRAGMA foreign_keys = ON");
             createTables();
             insertDefaultData();
